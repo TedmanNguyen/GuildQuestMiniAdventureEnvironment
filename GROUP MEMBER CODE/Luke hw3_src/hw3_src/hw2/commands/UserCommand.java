@@ -1,0 +1,11 @@
+package hw2.commands;
+
+public enum UserCommand {
+	ADD_CAMPAIGN,
+	EDIT_CAMPAIGN,
+	ENTER_REALM,
+	ADD_CHARACTER,
+	CHANGE_CHARACTER,
+	EDIT_SETTINGS,
+	EXIT_TO_MAIN_MENU
+}
