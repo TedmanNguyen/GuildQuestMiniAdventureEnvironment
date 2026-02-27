@@ -6,3 +6,6 @@ https://docs.google.com/document/d/1v0zBge4K8ybxHvYT8KW1oJgaaK1tR5DNLbUp4hC2LFs/
 
 Link to requirements:
 https://canvas.eee.uci.edu/courses/78745/assignments/1725783
+
+Link to UML Diagrams:
+https://www.figma.com/board/0oeXaHo1WZUWfoBiHrclDC/Untitled?node-id=0-1&p=f&t=0LHWs9eZJIqGVoPa-0
