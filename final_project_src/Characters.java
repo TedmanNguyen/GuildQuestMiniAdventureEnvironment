@@ -1,4 +1,5 @@
 public class Characters {
+    public static int characterId = 0;
     private String characterName;
     private Inventory inventory;
     public int x = 0;
@@ -8,7 +9,9 @@ public class Characters {
         this.characterName = characterName;
         x = spawnx;
         y = spawny;
+        characterId++;
     }
+
     public void setName(String newName){
         characterName = newName;
     }
@@ -20,6 +23,10 @@ public class Characters {
     public int getYPosition()
     {
         return y;
+    }
+
+    public string toString(){
+        return String.valueOf(characterId);
     }
 
     public void getCharacterInfo(){
