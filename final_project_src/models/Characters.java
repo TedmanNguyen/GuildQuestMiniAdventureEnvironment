@@ -1,3 +1,5 @@
+package models;
+
 public class Characters {
     private String characterName;
     private Inventory inventory;
