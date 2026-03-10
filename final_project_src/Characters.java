@@ -1,5 +1,6 @@
 public class Characters {
-    public static int characterId = 0;
+    public static int characterId = 1;
+    public int id;
     private String characterName;
     private Inventory inventory;
     public int x = 0;
@@ -13,9 +14,10 @@ public class Characters {
     public Characters (int characterId, String characterName, int spawnx, int spawny){
 >>>>>>> 8782494892866c2eb6d01c1424faa688ef0b5085
         this.characterName = characterName;
+        inventory = new Inventory();
         x = spawnx;
         y = spawny;
-        characterId++;
+        this.id = characterId++;
     }
 
     public void setName(String newName){
