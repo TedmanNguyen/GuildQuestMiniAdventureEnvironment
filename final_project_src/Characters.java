@@ -25,7 +25,7 @@ public class Characters {
         return y;
     }
 
-    public string toString(){
+    public String toString(){
         return String.valueOf(characterId);
     }
 
