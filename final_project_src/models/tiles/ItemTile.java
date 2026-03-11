@@ -1,3 +1,9 @@
+package models.tiles;
+
+import models.Characters;
+import models.Item;
+import models.Position;
+
 public class ItemTile extends Tile {
     private Item item;
     private Position position;

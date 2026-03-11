@@ -1,3 +1,7 @@
+package models.tiles;
+
+import models.Characters;
+
 public class WallTile extends Tile {
     private static String character = "|";
 

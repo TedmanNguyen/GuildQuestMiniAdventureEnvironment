@@ -1,3 +1,5 @@
+package models;
+
 public class Characters {
     public static int characterId = 1;
     public int id;
@@ -6,13 +8,7 @@ public class Characters {
     public int x = 0;
     public int y = 0;
 
-<<<<<<< HEAD
-
-    public Characters (int characterId, String characterName, String characterClass){
-        this.characterId = characterId;
-=======
     public Characters (int characterId, String characterName, int spawnx, int spawny){
->>>>>>> 8782494892866c2eb6d01c1424faa688ef0b5085
         this.characterName = characterName;
         inventory = new Inventory();
         x = spawnx;

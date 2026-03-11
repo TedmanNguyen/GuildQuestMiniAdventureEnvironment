@@ -1,3 +1,8 @@
+package models.tiles;
+
+import models.Characters;
+import models.Position;
+
 public abstract class Tile {
 
     protected String currentCharacter;  // the character representation of the tile, appears on the grid (i.e., an empty tile would be " ")

@@ -1,3 +1,5 @@
+package models;
+
 public class Item {
     private static char characterId = 'a';
 
