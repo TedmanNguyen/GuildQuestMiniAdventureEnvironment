@@ -1,3 +1,8 @@
+package models.tiles;
+
+import models.Characters;
+import models.Position;
+
 public abstract class Tile {
 
     protected String currentCharacter;

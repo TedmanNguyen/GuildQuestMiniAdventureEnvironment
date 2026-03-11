@@ -1,4 +1,4 @@
-package hw2;
+package models;
 
 public class WorldClock extends Thread {
 	private static int minuteTick = 1000;	// how many irl ms in a in-game minute

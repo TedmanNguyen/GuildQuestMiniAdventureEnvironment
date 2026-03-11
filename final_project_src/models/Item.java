@@ -1,10 +1,16 @@
 package models;
-public class Item {
-    String test;
-    Item(){
 
+public class Item {
+    private static char characterId = 'a';
+
+    public char id;
+
+    public Item(int itemId){
+        this.id = characterId++;
     }
-    String getItems(){
-        return test;
+
+    public String toString()
+    {
+        return "" + this.id;
     }
 }

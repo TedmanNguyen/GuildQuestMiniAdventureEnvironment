@@ -1,4 +1,7 @@
+package models;
 import java.util.Objects;
+
+import models.Characters;
 
 public class Position{
     private final int row;
