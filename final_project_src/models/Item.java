@@ -1,16 +1,20 @@
 package models;
 
+import models.tiles.TileCharacter;
+
 public class Item {
     private static char characterId = 'a';
 
-    public char id;
+    private TileCharacter tileCharacter;
 
-    public Item(int itemId){
-        this.id = characterId++;
+    public Item(){
+        tileCharacter = new TileCharacter(characterId++);
     }
 
     public String toString()
     {
-        return "" + this.id;
+        return tileCharacter.toString();
     }
+
+    public TileCharacter tileCharacter() { return tileCharacter; }
 }
