@@ -1,11 +1,15 @@
 package models.tiles;
 
 import models.Characters;
+import models.Position;
 
 public class WallTile extends Tile {
-    private static String character = "|";
+    private static TileCharacter character = new TileCharacter('|');
 
-    public WallTile() {}
+    public WallTile(Position position) {
+        this.position = position;
+        currentCharacter = new TileCharacter(character);
+    }
 
     public void stepOn(Characters c) {
         return;
@@ -16,6 +20,6 @@ public class WallTile extends Tile {
     }
 
     public String toString() {
-        return character;
+        return currentCharacter.toString();
     }
 }

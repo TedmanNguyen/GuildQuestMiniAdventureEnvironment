@@ -1,21 +1,26 @@
 package models.tiles;
 
 import models.Characters;
+import models.Position;
 
 public class SafeTile extends Tile {
-    private static String character = " ";
+    private static TileCharacter beforeSteppedOnCharacter = new TileCharacter(' ');
+    private static TileCharacter afterSteppedOffCharacter = new TileCharacter('X');
 
-    public SafeTile() {}
+    public SafeTile(Position position) {
+        this.position = position;
+        currentCharacter = new TileCharacter(beforeSteppedOnCharacter);
+    }
 
     public void stepOn(Characters c) {
-        currentCharacter = character;
+        currentCharacter.updateCharacter(c.tileCharacter());
     }
 
     public void stepOff() {
-        currentCharacter = character;
+        currentCharacter.updateCharacter(afterSteppedOffCharacter);
     }
 
     public String toString() {
-        return currentCharacter;
+        return currentCharacter.toString();
     }
 }

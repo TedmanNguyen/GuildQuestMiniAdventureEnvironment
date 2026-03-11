@@ -1,23 +1,25 @@
 package models.tiles;
 
 import models.Characters;
+import models.Position;
 
 public class EmptyTile extends Tile {
-    private static String character = " ";
+    private static TileCharacter character = new TileCharacter(' ');
 
-    public EmptyTile() {
-        currentCharacter = character;
+    public EmptyTile(Position position) {
+        currentCharacter.updateCharacter(character);
+        this.position = position;
     }
 
     public void stepOn(Characters c) {
-        currentCharacter = c.toString();
+        currentCharacter.updateCharacter(c.tileCharacter());
     }
 
     public void stepOff() {
-        currentCharacter = character;
+        currentCharacter.updateCharacter(character);
     }
 
     public String toString() {
-        return currentCharacter;
+        return currentCharacter.toString();
     }
 }
