@@ -33,6 +33,10 @@ public class Characters {
         return y;
     }
 
+    public String getCharacterName(){
+        return characterName;
+    }
+
     public String toString(){
         return tileCharacter.toString();
     }
