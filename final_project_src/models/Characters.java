@@ -1,23 +1,23 @@
+package models;
+
+import models.tiles.TileCharacter;
+
 public class Characters {
     public static int characterId = 1;
-    public int id;
+    private TileCharacter tileCharacter;
     private String characterName;
     private Inventory inventory;
     public int x = 0;
     public int y = 0;
 
-<<<<<<< HEAD
-
-    public Characters (int characterId, String characterName, String characterClass){
-        this.characterId = characterId;
-=======
     public Characters (int characterId, String characterName, int spawnx, int spawny){
->>>>>>> 8782494892866c2eb6d01c1424faa688ef0b5085
         this.characterName = characterName;
         inventory = new Inventory();
         x = spawnx;
         y = spawny;
-        this.id = characterId++;
+        /* The following line converts an integer to a Character. It will not work if the ID
+        exceeds 9.*/
+        tileCharacter = new TileCharacter(Character.forDigit(characterId, 10));
     }
 
     public void setName(String newName){
@@ -34,7 +34,7 @@ public class Characters {
     }
 
     public String toString(){
-        return String.valueOf(characterId);
+        return tileCharacter.toString();
     }
 
     public void getCharacterInfo(){
@@ -43,4 +43,5 @@ public class Characters {
     public Inventory getInventory() {
         return inventory;
     }
+    public TileCharacter tileCharacter() { return tileCharacter; } 
 }

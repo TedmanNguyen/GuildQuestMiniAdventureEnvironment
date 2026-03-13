@@ -1,3 +1,4 @@
+package models;
 public abstract class MiniAdventure {
 
     protected Realm realm;

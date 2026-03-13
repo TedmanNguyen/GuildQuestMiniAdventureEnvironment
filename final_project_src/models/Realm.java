@@ -1,6 +1,9 @@
+package models;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+
+import ui.GuildQuest;
 
 // changed from design: Realm implements LocalTimeRule
 public class Realm implements LocalTimeRule {
