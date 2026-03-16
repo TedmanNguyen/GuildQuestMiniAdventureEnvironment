@@ -10,34 +10,38 @@ public class GuildQuestUI implements UserInterface {
     private GuildQuest game;
     private ArrayList<Command> commands;
     private CharacterInputHandler characterInputHandler;
-
     public GuildQuestUI(GuildQuest game) {
         this.game = game;
         characterInputHandler = new CharacterInputHandler(game);
         commands = new ArrayList<>();
         commands.add(new AddCharacterCommand(this));
-        commands.add(new SelectRealmCommand(this));
         commands.add(new ListCharactersCommand(this));
     }
 
     @Override
     public void commandLoop() {
+        
         boolean running = true;
         while (running) {
+            
             printCommands();
             int choice = getChoice();
-            if (choice == 0) {
-                running = false;
-            } else if (choice > 0 && choice <= commands.size()) {
+            
+            if (choice > 0 && choice <= commands.size()) {
                 commands.get(choice - 1).process();
             } else {
                 System.out.println("Invalid choice.");
+            }
+            int count = game.getCharacterManager().characterAmount();
+            if (choice == 0 || count > 1){
+                running = false;
             }
         }
     }
 
     private void printCommands() {
         System.out.println("\n=== GUILDQUEST MAIN MENU ===");
+        System.out.println(" \nPlease create 2 Characters to Begin!\n");
         for (int i = 0; i < commands.size(); i++) {
             System.out.println((i + 1) + ". " + commands.get(i));
         }

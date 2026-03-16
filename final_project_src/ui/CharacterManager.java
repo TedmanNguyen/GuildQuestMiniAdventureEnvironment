@@ -23,7 +23,9 @@ public class CharacterManager {
             characters.get(i).getCharacterInfo();
         }
     }
-
+    public int characterAmount(){
+        return characters.size();
+    }
     public boolean isEmpty() {
         return characters.isEmpty();
     }

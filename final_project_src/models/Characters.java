@@ -42,7 +42,7 @@ public class Characters {
     }
 
     public void getCharacterInfo(){
-        System.out.println("Character info: \n" + characterName);
+        System.out.println("Character info: \n" + characterName );
     }
     public Inventory getInventory() {
         return inventory;
