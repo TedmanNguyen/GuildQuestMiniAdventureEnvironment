@@ -100,7 +100,7 @@ abstract class AbstractGrid<T> {
     }
 
     /**
-     * Useful for movement logic shared by games.
+     * Movement logic between games
      */
     public Position getNextPosition(Position current, char input) {
         return switch (Character.toLowerCase(input)) {
@@ -123,7 +123,6 @@ abstract class AbstractGrid<T> {
 
     /**
      * Optional text rendering for debugging.
-     * Your actual minigame can override visual rendering separately.
      */
     public void printDebugGrid() {
         for (int r = 0; r < rows; r++) {

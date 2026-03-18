@@ -17,8 +17,7 @@ public class Characters {
         inventory = new Inventory();
         x = spawnx;
         y = spawny;
-        /* The following line converts an integer to a Character. It will not work if the ID
-        exceeds 9.*/
+        // The following line converts an integer to a Character. It won't work if the ID exceeds 9.
         tileCharacter = new TileCharacter(Character.forDigit(characterId, 10));
     }
 

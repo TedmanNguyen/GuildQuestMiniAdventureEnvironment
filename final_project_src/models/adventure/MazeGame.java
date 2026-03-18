@@ -8,7 +8,10 @@ import java.util.Set;
 
 import models.Characters;
 import models.Position;
-
+/**
+ * MazeGame: 10x10 grid, Find invisible path to Exit (E). Supports two players visible and switchable via P<id>.
+ * Recommendation: Co-Op Gameplay. Switch players upon every death, which occurs when hitting an invisible wall
+ */
 public class MazeGame {
     private static final int SIZE = 10;
     private final Random random;
@@ -30,7 +33,7 @@ public class MazeGame {
         Set<Position> visited = new HashSet<>();
         visited.add(spawn);
 
-        // ensure all players start at spawn for this game instance
+        //This ensures all players start at spawn
         for (Characters p : players) {
             p.x = spawn.getCol();
             p.y = spawn.getRow();

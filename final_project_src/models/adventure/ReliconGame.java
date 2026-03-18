@@ -13,6 +13,7 @@ import models.Position;
 
 /**
  * Relicon: 10x10 grid, fog-of-war radius 1, collect E/X/I/T to win. Supports two players visible and switchable via P<id>.
+ * Recommendation: Co-Op Gameplay. Switch players upon finding a relic.
  */
 public class ReliconGame {
     private static final int SIZE = 10;

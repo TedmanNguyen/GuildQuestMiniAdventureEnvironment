@@ -7,8 +7,8 @@ public abstract class Grid {
     private Tile[][] grid;
     private Characters p1, p2;
     private int rows, cols;
-    //Initializes the grid dimensions, stores the two characters, then calls initializeGrid() and
-    // placeCharacters() to set everything up.
+    // This constructor initializes the grid dimensions, stores the two characters, 
+    // then calls initializeGrid() and placeCharacters() to set everything up.
     public Grid(int rows, int cols, Characters p1, Characters p2) {
         this.rows = rows;
         this.cols = cols;
@@ -18,7 +18,7 @@ public abstract class Grid {
         initializeGrid();
         placeCharacters();
     }
-    //initializeGrid(): Loops through every cell in the 2D array and fills each one with a blank anonymous
+    //This method loops through every cell in the 2D array and fills each one with a blank anonymous
     // Tile that knows how to display a character when stepped on, or revert to empty when stepped off.
     private void initializeGrid() {
         for (int i = 0; i < rows; i++) {
@@ -52,7 +52,7 @@ public abstract class Grid {
         }
     }
 
-    //placeCharacters(): Reads each character's starting (x, y)
+    //This method reads each character's starting (x, y)
     // position and calls stepOn() on their respective tile, so they appear on the grid from the start.
     private void placeCharacters() {
         if (p1 != null) {
@@ -70,13 +70,13 @@ public abstract class Grid {
             }
         }
     }
-    //inBounds(): Checks that a given row and column fall within the valid grid dimensions,
+    //This method checks that a given row and column fall within the valid grid dimensions,
     // returning true if so and false otherwise.
     private boolean inBounds(int row, int col) {
         return row >= 0 && row < rows && col >= 0 && col < cols;
     }
 
-    //displayGrid(): Iterates through every tile row by row,
+    //This method iterates through every tile row by row,
     // printing each tile's toString() to the console to render the grid visually.
     public void displayGrid(){
         for(int i = 0; i < rows; i++){
