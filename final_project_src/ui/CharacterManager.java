@@ -29,4 +29,15 @@ public class CharacterManager {
     public boolean isEmpty() {
         return characters.isEmpty();
     }
+
+    public ArrayList<Characters> getCharacters() {
+        return characters;
+    }
+
+    public Characters getById(int id) {
+        for (Characters c : characters) {
+            if (c.getId() == id) return c;
+        }
+        return null;
+    }
 }

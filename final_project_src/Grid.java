@@ -1,5 +1,8 @@
+package models;
 
-public abstract class AbstractGrid<T> {
+import models.Position;
+
+abstract class AbstractGrid<T> {
     protected final int rows;
     protected final int cols;
     protected final Object[][] cells;
@@ -100,7 +103,7 @@ public abstract class AbstractGrid<T> {
      * Useful for movement logic shared by games.
      */
     public Position getNextPosition(Position current, char input) {
-        return switch (Characters.toLowerCase(input)) {
+        return switch (Character.toLowerCase(input)) {
             case 'w' -> current.translate(-1, 0);
             case 's' -> current.translate(1, 0);
             case 'a' -> current.translate(0, -1);

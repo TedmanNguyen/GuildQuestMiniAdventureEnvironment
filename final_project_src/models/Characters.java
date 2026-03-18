@@ -4,6 +4,7 @@ import models.tiles.TileCharacter;
 
 public class Characters {
     public static int characterId = 1;
+    private final int id;
     private TileCharacter tileCharacter;
     private String characterName;
     private Inventory inventory;
@@ -11,6 +12,7 @@ public class Characters {
     public int y = 0;
 
     public Characters (int characterId, String characterName, int spawnx, int spawny){
+        this.id = characterId;
         this.characterName = characterName;
         inventory = new Inventory();
         x = spawnx;
@@ -37,9 +39,15 @@ public class Characters {
         return characterName;
     }
 
+    public int getId() {
+        return id;
+    }
+
     public String toString(){
         return tileCharacter.toString();
     }
+
+    public TileCharacter tileCharacter() { return tileCharacter; }
 
     public void getCharacterInfo(){
         System.out.println("Character info: \n" + characterName );
@@ -47,5 +55,4 @@ public class Characters {
     public Inventory getInventory() {
         return inventory;
     }
-    public TileCharacter tileCharacter() { return tileCharacter; } 
 }

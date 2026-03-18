@@ -33,7 +33,7 @@ public class Realm implements LocalTimeRule {
     public GameTime getLocalTime() { return calculate(); }
 
     public GameTime calculate() {
-        return GuildQuest.worldClock.getCurrentTime().applyOffset(timeOffset);
+        return GuildQuest.getWorldClock().getCurrentTime().applyOffset(timeOffset);
     }
     // added methods
     public String toString() {
