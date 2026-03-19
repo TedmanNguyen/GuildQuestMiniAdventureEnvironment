@@ -42,10 +42,10 @@ public class GuildQuestUI implements UserInterface {
     private void printCommands() {
         System.out.println("\n=== GUILDQUEST MAIN MENU ===");
         System.out.println(" \nPlease create 2 Characters to Begin!\n");
+        System.out.println("0. Exit");
         for (int i = 0; i < commands.size(); i++) {
             System.out.println((i + 1) + ". " + commands.get(i));
         }
-        System.out.println("0. Exit");
         System.out.print("Enter choice: ");
     }
 

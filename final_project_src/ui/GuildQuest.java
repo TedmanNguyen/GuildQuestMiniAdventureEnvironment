@@ -38,8 +38,10 @@ public class GuildQuest {
         ui.commandLoop();
         // AFTER 2 CHARACTERS CREATED COMMANDLOOP WILL END 
         // add ui.createGame here?
-        if (characterManager.characterAmount() >= 2) {
-            new GridMenu(characterManager.getCharacters()).run();
-        }
+        SelectionMenu menu = new SelectionMenu();
+        menu.commandLoop();
+        // if (characterManager.characterAmount() >= 2) {
+        //     new GridMenu(characterManager.getCharacters()).run();
+        // }
     }
 }

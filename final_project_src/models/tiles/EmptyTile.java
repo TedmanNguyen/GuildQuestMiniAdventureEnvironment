@@ -7,7 +7,7 @@ public class EmptyTile extends Tile {
     private static TileCharacter character = new TileCharacter(' ');
 
     public EmptyTile(Position position) {
-        currentCharacter.updateCharacter(character);
+        currentCharacter = new TileCharacter(character);
         this.position = position;
     }
 
