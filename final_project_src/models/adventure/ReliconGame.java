@@ -9,6 +9,7 @@ import java.util.Scanner;
 import java.util.Set;
 
 import models.Characters;
+import models.Item;
 import models.Position;
 
 /**
@@ -73,14 +74,17 @@ public class ReliconGame {
             active.x = activePos.getCol();
             active.y = activePos.getRow();
 
-            if (items.remove(activePos) != null) {
-                System.out.println("Picked up an item! Remaining: " + items.size());
-            }
+            // Capture the character being removed from the map
+            Character collectedLetter = items.remove(activePos); 
 
-            if (items.isEmpty()) {
-                render(activePos, items, active.getId());
-                System.out.println("You collected all items! You win!\n");
-                running = false;
+            if (collectedLetter != null) {
+                // 1. Create a new Item instance
+                Item newItem = new Item(); 
+                
+                // 2. Add the item to the active player's inventory
+                active.getInventory().addItem(new Item(collectedLetter));
+                
+                System.out.println("Picked up '" + collectedLetter + "'! Added to inventory. Remaining: " + items.size());
             }
         }
     }

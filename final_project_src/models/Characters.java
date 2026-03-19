@@ -54,4 +54,10 @@ public class Characters {
     public Inventory getInventory() {
         return inventory;
     }
-}
+
+    public int countItem(char letter) {
+    return (int) inventory.getItems().stream()
+        .filter(i -> i.toString().equals(String.valueOf(letter)))
+        .count();
+    }
+}   
