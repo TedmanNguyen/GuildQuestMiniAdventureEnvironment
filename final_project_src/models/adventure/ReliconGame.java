@@ -78,11 +78,11 @@ public class ReliconGame {
             Character collectedLetter = items.remove(activePos); 
 
             if (collectedLetter != null) {
-                // 1. Create a new Item instance
-                Item newItem = new Item(); 
+                // 1. Create a new Item instance with the collected letter
+                Item newItem = new Item(collectedLetter); 
                 
                 // 2. Add the item to the active player's inventory
-                active.getInventory().addItem(new Item(collectedLetter));
+                active.getInventory().addItem(newItem);
                 
                 System.out.println("Picked up '" + collectedLetter + "'! Added to inventory. Remaining: " + items.size());
             }
