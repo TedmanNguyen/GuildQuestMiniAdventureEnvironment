@@ -1,20 +1,14 @@
 package models;
-
 import models.tiles.TileCharacter;
 
 public class Item {
-    private static char characterId = 'a';
-
     private TileCharacter tileCharacter;
 
-    public Item(){
-        tileCharacter = new TileCharacter(characterId++);
+    // Accepts letter from any type of Relic-hunt game
+    public Item(char letter) {
+        this.tileCharacter = new TileCharacter(letter);
     }
 
-    public String toString()
-    {
-        return tileCharacter.toString();
-    }
-
+    public String toString() { return tileCharacter.toString(); }
     public TileCharacter tileCharacter() { return tileCharacter; }
 }

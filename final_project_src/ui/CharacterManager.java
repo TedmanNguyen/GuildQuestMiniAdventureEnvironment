@@ -12,7 +12,10 @@ public class CharacterManager {
     }
 
     public void createCharacter(int id, String name, int x, int y) {
-        characters.add(new Characters(id, name, x, y));
+        characters.add(new Characters.Builder(name, id)
+                                     .withPosition(x, y)
+                                     .withInventory()
+                                     .build());
     }
 
     public void printCharacters() {
@@ -28,5 +31,16 @@ public class CharacterManager {
     }
     public boolean isEmpty() {
         return characters.isEmpty();
+    }
+
+    public ArrayList<Characters> getCharacters() {
+        return characters;
+    }
+
+    public Characters getById(int id) {
+        for (Characters c : characters) {
+            if (c.getId() == id) return c;
+        }
+        return null;
     }
 }

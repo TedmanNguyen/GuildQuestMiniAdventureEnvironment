@@ -1,17 +1,23 @@
 package commands;
+import commands.domain_primitives.CommandName;
 import ui.GuildQuestUI;
+
+/**
+ * This class is used for determining the action that is taken whenever a user selects an option
+ * on a menu. Concrete classes are specific commands that appear on menus.
+ */
 
 public abstract class Command implements Processable {
     protected GuildQuestUI ui;
-    private String name;
+    private CommandName name;
 
     public Command(GuildQuestUI ui, String name) {
         this.ui = ui;
-        this.name = name;
+        this.name = new CommandName(name);
     }
 
     public String toString() {
-        return name;
+        return name.toString();
     }
 
     public abstract void process();

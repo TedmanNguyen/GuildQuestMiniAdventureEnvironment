@@ -1,5 +1,8 @@
+package models;
 
-public abstract class AbstractGrid<T> {
+import models.Position;
+
+abstract class AbstractGrid<T> {
     protected final int rows;
     protected final int cols;
     protected final Object[][] cells;
@@ -97,10 +100,10 @@ public abstract class AbstractGrid<T> {
     }
 
     /**
-     * Useful for movement logic shared by games.
+     * Movement logic between games
      */
     public Position getNextPosition(Position current, char input) {
-        return switch (Characters.toLowerCase(input)) {
+        return switch (Character.toLowerCase(input)) {
             case 'w' -> current.translate(-1, 0);
             case 's' -> current.translate(1, 0);
             case 'a' -> current.translate(0, -1);
@@ -120,7 +123,6 @@ public abstract class AbstractGrid<T> {
 
     /**
      * Optional text rendering for debugging.
-     * Your actual minigame can override visual rendering separately.
      */
     public void printDebugGrid() {
         for (int r = 0; r < rows; r++) {
