@@ -5,6 +5,7 @@ import commands.AddCharacterCommand;
 import commands.Command;
 import commands.ListCharactersCommand;
 import commands.SelectRealmCommand;
+import commands.ViewActivityLogCommand;
 
 public class GuildQuestUI implements UserInterface {
     private GuildQuest game;
@@ -16,30 +17,30 @@ public class GuildQuestUI implements UserInterface {
         commands = new ArrayList<>();
         commands.add(new AddCharacterCommand(this));
         commands.add(new ListCharactersCommand(this));
+        commands.add(new ViewActivityLogCommand(this));
     }
 
     @Override
     public void commandLoop() {
-        
+
         boolean running = true;
         while (running) {
-            
+
             printCommands();
             int choice = getChoice();
-            if (choice == 0){
-                break;
-
-            }
+            if (choice == 0) break;
             if (choice > 0 && choice <= commands.size()) {
                 commands.get(choice - 1).process();
             } else {
                 System.out.println("Invalid choice.");
             }
             int count = game.getCharacterManager().characterAmount();
-            if (choice == 0 || count > 1){
-                running = false;
+            if (count > 1){
+                SelectionMenu menu = new SelectionMenu(this);
+                menu.commandLoop();
             }
         }
+        GuildQuest.getWorldClock().end();
     }
 
     private void printCommands() {
