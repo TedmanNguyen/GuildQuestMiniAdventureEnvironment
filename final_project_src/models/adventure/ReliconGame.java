@@ -1,12 +1,10 @@
 package models.adventure;
 
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.Scanner;
-import java.util.Set;
 
 import models.Characters;
 import models.Item;
@@ -16,22 +14,23 @@ import models.Position;
  * Relicon: 10x10 grid, fog-of-war radius 1, collect E/X/I/T to win. Supports two players visible and switchable via P<id>.
  * Recommendation: Co-Op Gameplay. Switch players upon finding a relic.
  */
-public class ReliconGame {
+public class ReliconGame extends MiniAdventure {
     private static final int SIZE = 10;
     private static final char EMPTY = ' ';
     private final Random random;
-    private final List<Characters> players;
 
     public ReliconGame(List<Characters> players) {
         this(players, new Random());
     }
 
     public ReliconGame(List<Characters> players, Random random) {
+        super(players);
         this.random = random;
-        this.players = players;
     }
 
+    @Override
     public void play(Characters startingPlayer) {
+        this.currentPlayer = startingPlayer;
         Position activePos = new Position(startingPlayer.y, startingPlayer.x);
         Characters active = startingPlayer;
         Map<Position, Character> items = spawnItems();
@@ -84,12 +83,22 @@ public class ReliconGame {
                 // 2. Add the item to the active player's inventory
                 active.getInventory().addItem(newItem);
                 
-                System.out.println("Picked up '" + collectedLetter + "'! Added to inventory. Remaining: " + items.size());
+                System.out.println("Picked up '" + collectedLetter + "'! Added to inventory.");
+            }
+
+            // Always show how many relics remain after the move
+            System.out.println("Remaining: " + items.size());
+
+            // If there are no relics left, end the mini-adventure
+            if (items.isEmpty()) {
+                System.out.println("You have collected all available relics! Returning...\n");
+                break;
             }
         }
     }
 
-    private boolean inBounds(Position pos) {
+    @Override
+    protected boolean inBounds(Position pos) {
         return pos.getRow() >= 0 && pos.getRow() < SIZE && pos.getCol() >= 0 && pos.getCol() < SIZE;
     }
 

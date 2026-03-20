@@ -1,6 +1,6 @@
 package models.tiles;
 import models.Characters;
-import models.MiniAdventure;
+import models.adventure.MiniAdventure;
 
 public class MiniAdventurePortalTile extends Tile {
     private static TileCharacter character = new TileCharacter('O');
@@ -13,7 +13,7 @@ public class MiniAdventurePortalTile extends Tile {
 
     public void stepOn(Characters c) {
         currentCharacter.updateCharacter(c.tileCharacter());
-        miniAdventure.launch();
+        miniAdventure.play(c);
     }
 
     public void stepOff() {

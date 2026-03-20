@@ -12,21 +12,22 @@ import models.Position;
  * MazeGame: 10x10 grid, Find invisible path to Exit (E). Supports two players visible and switchable via P<id>.
  * Recommendation: Co-Op Gameplay. Switch players upon every death, which occurs when hitting an invisible wall
  */
-public class MazeGame {
+public class MazeGame extends MiniAdventure {
     private static final int SIZE = 10;
     private final Random random;
-    private final List<Characters> players;
 
     public MazeGame(List<Characters> players) {
         this(players, new Random());
     }
 
     public MazeGame(List<Characters> players, Random random) {
+        super(players);
         this.random = random;
-        this.players = players;
     }
 
+    @Override
     public void play(Characters startingPlayer) {
+        this.currentPlayer = startingPlayer;
         Position spawn = new Position(SIZE / 2, SIZE / 2);
         Position exit = randomExit();
         Set<Position> path = generatePath(spawn, exit);
@@ -101,7 +102,8 @@ public class MazeGame {
         }
     }
 
-    private boolean inBounds(Position pos) {
+    @Override
+    protected boolean inBounds(Position pos) {
         return pos.getRow() >= 0 && pos.getRow() < SIZE && pos.getCol() >= 0 && pos.getCol() < SIZE;
     }
 

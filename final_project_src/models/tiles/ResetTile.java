@@ -1,6 +1,6 @@
 package models.tiles;
 
-import models.MiniAdventure;
+import models.adventure.MiniAdventure;
 import models.Characters;
 import models.Position;
 
