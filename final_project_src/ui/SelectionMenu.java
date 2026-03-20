@@ -6,6 +6,7 @@ import java.util.Arrays;
 import commands.Command;
 import commands.EnterRealmCommand;
 import commands.LaunchMiniAdventureCommand;
+import commands.ViewActivityLogCommand;
 
 public class SelectionMenu implements UserInterface {
 
@@ -16,12 +17,13 @@ public class SelectionMenu implements UserInterface {
         this.ui = ui;
         commands = new ArrayList<>(Arrays.asList(new Command[] {
             new EnterRealmCommand(ui),
-            new LaunchMiniAdventureCommand(ui)
+            new LaunchMiniAdventureCommand(ui),
+            new ViewActivityLogCommand(ui)
         }));
     }
 
     private void printCommands() {
-        System.out.println("\n=== SELECT A REALM ===");
+        System.out.println("\n=== MAIN MENU ===");
         System.out.println("0: Quit");
         for (int i = 0; i < commands.size(); ++i)
             System.out.printf("%d: %s\n", i + 1, commands.get(i));

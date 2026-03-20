@@ -36,7 +36,7 @@ public class GuildQuest {
 
     public void gameLoop() {
         ui.commandLoop();
-        // AFTER 2 CHARACTERS CREATED COMMANDLOOP WILL END 
+        // AFTER 2 CHARACTERS CREATED COMMANDLOOP WILL END
         SelectionMenu menu = new SelectionMenu((GuildQuestUI) ui);
         menu.commandLoop();
     }

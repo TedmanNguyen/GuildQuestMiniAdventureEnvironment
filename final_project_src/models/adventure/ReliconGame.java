@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.Random;
 import java.util.Scanner;
 
+import models.ActivityLog;
 import models.Characters;
 import models.Item;
 import models.Position;
@@ -31,6 +32,8 @@ public class ReliconGame extends MiniAdventure {
     @Override
     public void play(Characters startingPlayer) {
         this.currentPlayer = startingPlayer;
+        Timer timer = new Timer();
+        timer.startTimer();
         Position activePos = new Position(startingPlayer.y, startingPlayer.x);
         Characters active = startingPlayer;
         Map<Position, Character> items = spawnItems();
@@ -45,6 +48,11 @@ public class ReliconGame extends MiniAdventure {
             String line = scanner.nextLine().trim();
             if (line.isEmpty()) continue;
             if (line.equalsIgnoreCase("q")) {
+                // Stop the timer on early exit and record this attempt as a quit for all players
+                Time elapsed = timer.stopTimer();
+                for (Characters p : players) {
+                    ActivityLog.record("Relicon Game", p, elapsed.secondsPassed(), false);
+                }
                 System.out.println("Leaving Relicon. Back to menu.");
                 break;
             }
@@ -91,7 +99,12 @@ public class ReliconGame extends MiniAdventure {
 
             // If there are no relics left, end the mini-adventure
             if (items.isEmpty()) {
-                System.out.println("You have collected all available relics! Returning...\n");
+                Time elapsed = timer.stopTimer();
+                for (Characters p : players) {
+                    ActivityLog.record("Relicon Game", p, elapsed.secondsPassed(), true);
+                }
+                System.out.println("You have collected all available relics!");
+                System.out.println("Time taken: " + elapsed.secondsPassed() + " seconds. Returning...\n");
                 break;
             }
         }

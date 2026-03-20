@@ -26,7 +26,10 @@ public class GuildQuestUI implements UserInterface {
             
             printCommands();
             int choice = getChoice();
-            
+            if (choice == 0){
+                break;
+
+            }
             if (choice > 0 && choice <= commands.size()) {
                 commands.get(choice - 1).process();
             } else {

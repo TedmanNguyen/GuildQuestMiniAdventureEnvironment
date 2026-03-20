@@ -6,6 +6,7 @@ import java.util.Random;
 import java.util.Scanner;
 import java.util.Set;
 
+import models.ActivityLog;
 import models.Characters;
 import models.Position;
 /**
@@ -28,6 +29,8 @@ public class MazeGame extends MiniAdventure {
     @Override
     public void play(Characters startingPlayer) {
         this.currentPlayer = startingPlayer;
+        Timer timer = new Timer();
+        timer.startTimer();
         Position spawn = new Position(SIZE / 2, SIZE / 2);
         Position exit = randomExit();
         Set<Position> path = generatePath(spawn, exit);
@@ -56,6 +59,11 @@ public class MazeGame extends MiniAdventure {
             String line = scanner.nextLine();
             if (line.isEmpty()) continue;
             if (line.equalsIgnoreCase("q") || line.equalsIgnoreCase("quit")) {
+                // Stop the timer on early exit and record this attempt as a quit for all players
+                Time elapsed = timer.stopTimer();
+                for (Characters p : players) {
+                    ActivityLog.record("Maze Game", p, elapsed.secondsPassed(), false);
+                }
                 System.out.println("Leaving Maze. Back to menu.");
                 break;
             }
@@ -96,7 +104,12 @@ public class MazeGame extends MiniAdventure {
 
             if (activePos.equals(exit)) {
                 render(activePos, visited, active.getId(), exit);
-                System.out.println("You escaped the maze! Exit was at " + exit + "\n");
+                Time elapsed = timer.stopTimer();
+                for (Characters p : players) {
+                    ActivityLog.record("Maze Game", p, elapsed.secondsPassed(), true);
+                }
+                System.out.println("You escaped the maze! Exit was at " + exit);
+                System.out.println("Time taken: " + elapsed.secondsPassed() + " seconds.\n");
                 running = false;
             }
         }
