@@ -1,6 +1,6 @@
 package commands;
+import commands.domain_primitives.CommandName;
 import ui.GuildQuestUI;
-import commands.primitive_domains.CommandName;
 
 /**
  * This class is used for determining the action that is taken whenever a user selects an option

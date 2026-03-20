@@ -12,7 +12,10 @@ public class CharacterManager {
     }
 
     public void createCharacter(int id, String name, int x, int y) {
-        characters.add(new Characters(id, name, x, y));
+        characters.add(new Characters.Builder(name, id)
+                                     .withPosition(x, y)
+                                     .withInventory()
+                                     .build());
     }
 
     public void printCharacters() {

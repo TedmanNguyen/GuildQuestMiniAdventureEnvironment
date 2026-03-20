@@ -2,8 +2,12 @@ package models;
 
 import models.tiles.TileCharacter;
 
+/**
+ * Uses the builder pattern for creating new Characters
+ */
+
 public class Characters {
-    public static int characterId = 1;
+    // public static int characterId = 1;
     private final int id;
     private TileCharacter tileCharacter;
     private String characterName;
@@ -11,14 +15,14 @@ public class Characters {
     public int x = 0;
     public int y = 0;
 
-    public Characters (int characterId, String characterName, int spawnx, int spawny){
-        this.id = characterId;
-        this.characterName = characterName;
-        inventory = new Inventory();
-        x = spawnx;
-        y = spawny;
+    private Characters (Builder builder){
+        this.id = builder.id;
+        this.characterName = builder.characterName;
+        inventory = builder.inventory;
+        x = builder.x;
+        y = builder.y;
         // The following line converts an integer to a Character. It won't work if the ID exceeds 9.
-        tileCharacter = new TileCharacter(Character.forDigit(characterId, 10));
+        tileCharacter = new TileCharacter(Character.forDigit(builder.id, 10));
     }
 
     public void setName(String newName){
@@ -59,5 +63,39 @@ public class Characters {
     return (int) inventory.getItems().stream()
         .filter(i -> i.toString().equals(String.valueOf(letter)))
         .count();
+    }
+
+
+    public static class Builder {
+        // public static int characterId = 1;
+        private TileCharacter tileCharacter;
+        private int id;
+        private String characterName;
+        private Inventory inventory;
+        private Integer x = 0;
+        private Integer y = 0;
+
+        public Builder(String name, int characterId) {
+            this.characterName = name;
+            id = characterId;
+            this.inventory = null;
+            this.x = null;
+            this.y = null;
+        }
+
+        public Builder withPosition(int x, int y) {
+            this.x = x;
+            this.y = y;
+            return this;
+        }
+
+        public Builder withInventory() {
+            inventory = new Inventory();
+            return this;
+        }
+
+        public Characters build() {
+            return new Characters(this);
+        }
     }
 }   

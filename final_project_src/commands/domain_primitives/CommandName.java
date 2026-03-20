@@ -1,4 +1,4 @@
-package commands.primitive_domains;
+package commands.domain_primitives;
 
 /**
  * Primitive domain class that validates the names for commands
