@@ -9,6 +9,7 @@ public class LaunchMiniAdventureCommand extends Command {
     }
 
     public void process() {
+        MiniAdventure.printAdventures();
         System.out.println("Not yet implemented");
     }
 }

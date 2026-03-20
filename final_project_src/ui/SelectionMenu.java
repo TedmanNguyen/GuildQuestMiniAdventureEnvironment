@@ -5,6 +5,7 @@ import java.util.Arrays;
 
 import commands.Command;
 import commands.EnterRealmCommand;
+import commands.LaunchMiniAdventureCommand;
 
 public class SelectionMenu implements UserInterface {
 
@@ -14,7 +15,8 @@ public class SelectionMenu implements UserInterface {
     public SelectionMenu(GuildQuestUI ui) {
         this.ui = ui;
         commands = new ArrayList<>(Arrays.asList(new Command[] {
-            new EnterRealmCommand(ui)
+            new EnterRealmCommand(ui),
+            new LaunchMiniAdventureCommand(ui)
         }));
     }
 

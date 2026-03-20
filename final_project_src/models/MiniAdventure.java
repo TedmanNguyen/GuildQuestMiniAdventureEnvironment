@@ -1,6 +1,11 @@
 package models;
+
 import java.util.Scanner;
+import java.util.List;
+import java.util.ArrayList;
+
 public abstract class MiniAdventure {
+    protected static List<MiniAdventure> adventures = new ArrayList<>();
 
     protected Realm realm;
     protected Characters player1;
@@ -15,44 +20,55 @@ public abstract class MiniAdventure {
         this.gameOver = false;
     }
 
-    public void launch(){
-        Scanner scanner = new Scanner(System.in);
+    // public void launch(){
+    //     Scanner scanner = new Scanner(System.in);
 
-        initializeAdventure();
+    //     initializeAdventure();
 
-        while (!gameOver){
-            displayGrid();
-            System.out.println("Current Player:" + currentPlayer.getCharacterName());
-            System.out.println("Enter next move: ");
-            String input = scanner.nextLine();
+    //     while (!gameOver){
+    //         displayGrid();
+    //         System.out.println("Current Player:" + currentPlayer.getCharacterName());
+    //         System.out.println("Enter next move: ");
+    //         String input = scanner.nextLine();
 
-            processInput(input);
+    //         processInput(input);
 
-            if (isGameOver()){
-                gameOver = true;
-            }
-            else{
-                switchTurns();
-            }
-        }
-    }
+    //         if (isGameOver()){
+    //             gameOver = true;
+    //         }
+    //         else{
+    //             switchTurns();
+    //         }
+    //     }
+    // }
 
-    protected void switchTurns(){
-        if (currentPlayer == player1){
-            currentPlayer = player2;
-        }
-        else{
-            currentPlayer = player1;
-        }
-    }
+    public abstract void play(Characters startingPlayer);
+    protected abstract boolean inBounds(Position pos);
 
-    protected abstract void initializeAdventure();
-    protected abstract void displayGrid();
-    protected abstract void processInput(String input);
-    protected abstract boolean isGameOver();
+    // protected void switchTurns(){
+    //     if (currentPlayer == player1){
+    //         currentPlayer = player2;
+    //     }
+    //     else{
+    //         currentPlayer = player1;
+    //     }
+    // }
+
+    // protected abstract void initializeAdventure();
+    // protected abstract void displayGrid();
+    // protected abstract void processInput(String input);
+    // protected abstract boolean isGameOver();
 
     protected void endAdventure(){
         System.out.println("Mini-Adventure over!");
+    }
+
+    public static void printAdventures() {
+        System.out.println("ADVENTURES");
+        System.out.println("--------------------");
+        for (int i = 0; i < adventures.size(); ++i)
+            System.out.println(i + ": " + adventures.get(i));
+        System.out.println();
     }
 
 
