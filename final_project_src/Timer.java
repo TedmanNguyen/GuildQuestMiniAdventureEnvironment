@@ -1,16 +1,16 @@
 public class Timer extends Thread {
     private boolean running;
-    private int secondsPassed;
+    private Time time;      // domain primitive, wrapper around an int
 
     public Timer() {
-        secondsPassed = 0;
+        time = new Time();
     }
 
     public void run() {
         while (running) {
             try {
 				sleep(1000);    // sleep the thread for 1000 ms (1s)
-                ++secondsPassed;
+                time.increment();
 			}
 			catch (InterruptedException e) {
 				System.out.println("Error with the timer");
@@ -19,9 +19,9 @@ public class Timer extends Thread {
         }
     }
 
-    public int stopTimer() {
+    public Time stopTimer() {
         running = false;
-        return secondsPassed;
+        return time;
     }
 
     public void startTimer() {
